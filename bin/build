@@ -1,0 +1,25 @@
+#!/bin/bash
+# -*- mode: bash; tab-width: 2; -*-
+# vim: ts=2 sw=2 ft=bash noet
+
+set -e
+
+# source the Nos framework
+. /opt/nanobox/nos/common.sh
+
+# initialize Nos with the original arguments
+nos_init "$@"
+
+# source common lib
+. ${engine_lib_dir}/crystal.sh
+
+# install crystal
+install_runtime_packages
+
+# setup crystal env vars
+setup_crystal_env
+
+# Fetch crystal shards
+fetch_shards
+
+exit 0
